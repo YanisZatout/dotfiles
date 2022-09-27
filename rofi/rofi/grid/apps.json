@@ -1,0 +1,87 @@
+[
+    {
+        "name": "Dolphin",
+        "command": "/usr/bin/dolphin /home/zatout/",
+        "icon": "/home/zatout/.config/rofi/grid/icons/reversal-black/org.kde.dolphin.svg"
+    },
+    {
+        "name": "Nextcloud",
+        "command": "/usr/bin/nextcloud",
+        "icon": "/home/zatout/.config/rofi/grid/icons/reversal-black/goa-account-owncloud.svg"
+    },
+    {
+        "name": "Mattermost",
+        "command": "/usr/bin/mattermost-desktop",
+        "icon": "/home/zatout/.config/rofi/grid/icons/reversal-black/mattermost-desktop.svg"
+    },
+    {
+        "name": "Telegram",
+        "command": "/usr/bin/telegram-desktop",
+        "icon": "/home/zatout/.config/rofi/grid/icons/reversal-black/telegram.svg"
+    },
+    {
+        "name": "Thunderbird",
+        "command": "/usr/bin/thunderbird",
+        "icon": "/home/zatout/.config/rofi/grid/icons/reversal-black/thunderbird.svg"
+    },
+    {
+        "name": "Kate",
+        "command": "/usr/bin/kate",
+        "icon": "/home/zatout/.config/rofi/grid/icons/reversal-black/kate.svg"
+    },
+    {
+        "name": "Firefox",
+        "command": "/usr/bin/firefox",
+        "icon": "/home/zatout/.config/rofi/grid/icons/reversal-black/firefox.svg"
+    },
+    {
+        "name": "Zotero",
+        "command": "/usr/bin/zotero",
+        "icon": "/home/zatout/.config/rofi/grid/icons/reversal-black/zotero.svg"
+    },
+    {
+        "name": "Okular",
+        "command": "/usr/bin/okular",
+        "icon": "/home/zatout/.config/rofi/grid/icons/reversal-black/okular.svg"
+    },
+    {
+        "name": "Calc",
+        "command": "/usr/bin/libreoffice --calc",
+        "icon": "/home/zatout/.config/rofi/grid/icons/reversal-black/libreoffice-calc.svg"
+    },
+    {
+        "name": "Zoom",
+        "command": "/usr/bin/zoom",
+        "icon": "/home/zatout/.config/rofi/grid/icons/reversal-black/Zoom.svg"
+    },
+    {
+    	"name": "VSCode",
+    	"command": "/usr/bin/code",
+    	"icon": "/home/zatout/.config/rofi/grid/icons/reversal-black/vsc.svg"
+    },
+    {
+        "name": "Gimp",
+        "command": "/usr/bin/gimp",
+        "icon": "/home/zatout/.config/rofi/grid/icons/reversal-black/gimp.svg"
+    },
+    {
+        "name":"Flameshot",
+        "command":"/usr/bin/flameshot gui",
+        "icon":"/home/zatout/.config/rofi/grid/icons/reversal-black/flameshot.svg"
+    },
+    {
+	"name":"Jupyter",
+	"command":"/home/zatout/anaconda3/bin/jupyter lab",
+	"icon":"/home/zatout/.config/rofi/grid/icons/reversal-black/jupyter.svg"
+    },
+    {
+	"name":"Pycharm",
+	"command":"sh /home/zatout/Apps/pycharm-community-2022.1/bin/pycharm.sh",
+	"icon":"/home/zatout/.config/rofi/grid/icons/reversal-black/pycharm.svg"
+    },
+  {
+    "name":"i3-layout-manager",
+    "command":"sh /home/zatout/Téléchargements/i3-layout-manager/layout_manager.sh"
+  }
+]
+

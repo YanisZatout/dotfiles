@@ -1,0 +1,68 @@
+[
+    {
+        "name": "Dolphin",
+        "command": "/usr/bin/dolphin ~/",
+        "icon": "~/.config/rofi/grid/icons/reversal-black/org.kde.dolphin.svg"
+    },
+    {
+        "name": "Nextcloud",
+        "command": "/usr/bin/nextcloud",
+        "icon": "~/.config/rofi/grid/icons/reversal-black/goa-account-owncloud.svg"
+    },
+    {
+        "name": "Mattermost",
+        "command": "/usr/bin/mattermost-desktop",
+        "icon": "~/.config/rofi/grid/icons/reversal-black/mattermost-desktop.svg"
+    },
+    {
+        "name": "Telegram",
+        "command": "/usr/bin/telegram-desktop",
+        "icon": "~/.config/rofi/grid/icons/reversal-black/telegram.svg"
+    },
+    {
+        "name": "Thunderbird",
+        "command": "/usr/bin/thunderbird",
+        "icon": "~/.config/rofi/grid/icons/reversal-black/thunderbird.svg"
+    },
+    {
+        "name": "Kate",
+        "command": "/usr/bin/kate",
+        "icon": "~/.config/rofi/grid/icons/reversal-black/kate.svg"
+    },
+    {
+        "name": "Firefox",
+        "command": "/usr/bin/firefox",
+        "icon": "~/.config/rofi/grid/icons/reversal-black/firefox.svg"
+    },
+    {
+        "name": "Zotero",
+        "command": "/usr/bin/zotero",
+        "icon": "~/.config/rofi/grid/icons/reversal-black/zotero.svg"
+    },
+    {
+        "name": "Okular",
+        "command": "/usr/bin/okular",
+        "icon": "~/.config/rofi/grid/icons/reversal-black/okular.svg"
+    },
+    {
+        "name": "Calc",
+        "command": "/usr/bin/libreoffice --calc",
+        "icon": "~/.config/rofi/grid/icons/reversal-black/libreoffice-calc.svg"
+    },
+    {
+        "name": "Zoom",
+        "command": "/usr/bin/zoom",
+        "icon": "~/.config/rofi/grid/icons/reversal-black/Zoom.svg"
+    },
+    {
+    	"name": "VSCode",
+    	"command": "/usr/bin/code",
+    	"icon": "~/.config/rofi/grid/icons/reversal-black/vsc.svg"
+    },
+    {
+        "name": "Gimp",
+        "command": "/usr/bin/gimp",
+        "icon": "~/.config/rofi/grid/icons/reversal-black/gimp.svg"
+    }
+]
+

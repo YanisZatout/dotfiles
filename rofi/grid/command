@@ -1,0 +1,1 @@
+/usr/bin/rofi -show-icons -me-select-entry '' -me-accept-entry MousePrimary -modi 'dock':'~/.config/rofi/dock/rofi-json.sh ~/.config/rofi/dock/apps.json' -show dock -theme /home/zatout/.config/rofi/themes/slate_center.rasi

@@ -1,0 +1,410 @@
+# i3 config file (v4)
+#
+# Please see https://i3wm.org/docs/userguide.html for a complete reference!
+#
+# This config file uses keycodes (bindsym) and was written for the QWERTY
+# layout.
+#
+# To get a config file with the same key positions, but for your current
+# layout, use the i3-config-wizard
+
+# Set modifier here, to be used throughout config
+set $mod Mod4
+
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below.
+## font pango:monospace 8
+
+# This font is widely installed, provides lots of unicode glyphs, right-to-left
+# text rendering and scalability on retina/hidpi displays (thanks to pango).
+## font pango:DejaVu Sans Mono 18
+
+# Try this font: 2019-06-27
+font pango: Noto 12
+
+# Before i3 v4.8, we used to recommend this one as the default:
+# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+# The font above is very space-efficient, that is, it looks good, sharp and
+# clear in small sizes. However, its unicode glyph coverage is limited, the old
+# X core fonts rendering does not support right-to-left and this being a bitmap
+# font, it doesn't scale on retina/hidpi displays.
+
+# use these keys for focus, movement, and resize directions when reaching for
+# the arrows is not convenient
+set $up k
+set $down j
+set $left h
+set $right l
+
+# use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# start a terminal
+#bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec alacritty
+
+# kill focused window
+bindsym $mod+Shift+a kill
+
+############################################################################################
+## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio
+############################################################################################
+
+#exec --no-startup-id volumeicon
+#bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
+#exec --no-startup-id pulseaudio
+#exec --no-startup-id pa-applet
+#bindsym $mod+Ctrl+m exec pavucontrol
+
+############################################################################################
+
+############
+bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+ #increase sound volume
+bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 5%- #decrease sound volume
+bindsym XF86AudioMute exec amixer set Master mute # mute sound
+bindsym XF86AudioMicMute exec amixer set Master unmute # mute mic
+############
+
+# Screen brightness controls
+# bindsym XF86MonBrightnessUp exec   "xbacklight -inc 5; notify-send 'brightness up'"
+# bindsym XF86MonBrightnessDown exec "xbacklight -dec 5; notify-send 'brightness down'"
+bindsym XF86MonBrightnessUp exec --no-startup-id light -A 2 # increase screen brightness
+bindsym XF86MonBrightnessDown exec --no-startup-id light -U 2 # decrease screen brightness
+
+# Eject key
+bindsym XF86Eject exec eject
+
+# Player controls
+bindsym XF86AudioPlay exec playerctl play
+bindsym XF86AudioPause exec playerctl pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
+# start dmenu (a program launcher)
+## bindsym $mod+d exec dmenu_run
+# There also is the (new) i3-dmenu-desktop which only displays applications
+# shipping a .desktop file. It is a wrapper around dmenu, so you need that
+# installed.
+# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+
+# start rofi (a program launcher)
+#bindsym $mod+d exec rofi -modi "window#run#ssh" -show drun
+
+bindsym $mod+d exec rofi -show-icons -me-select-entry '' -me-accept-entry MousePrimary -theme "/home/zatout/.config/rofi/themes/nord.rasi" -show drun -modi "window#drun#ssh"
+
+bindsym $mod+p exec rofi -show-icons -me-select-entry '' -me-accept-entry MousePrimary -modi dock:'~/.config/rofi/grid/rofi-json.sh ~/.config/rofi/grid/apps.json' -show dock -theme '~/.config/rofi/themes/slate_center.rasi'
+
+
+
+#####################################################################################################################
+#################                          how to exit, logoff, suspend, ...                        #################
+#####################################################################################################################
+
+#   bindsym $mod+0 mode "$mode_system"
+
+#   set $mode_system System (k) lock, (l) logout, (u) suspend, (h) hibernate, (r) reboot, (s) shutdown
+#   mode "$mode_system" {
+
+#       bindsym k exec --no-startup-id ~/.config/i3/scripts/i3exit.sh lock, mode "default"
+#       bindsym l exec --no-startup-id ~/.config/i3/scripts/i3exit.sh logout, mode "default"
+#       bindsym u exec --no-startup-id ~/.config/i3/scripts/i3exit.sh suspend, mode "default"
+#       bindsym h exec --no-startup-id ~/.config/i3/scripts/i3exit.sh hibernate, mode "default"
+#       bindsym r exec --no-startup-id ~/.config/i3/scripts/i3exit.sh reboot, mode "default"
+#       bindsym s exec --no-startup-id ~/.config/i3/scripts/i3exit.sh shutdown, mode "default"
+
+#       # back to normal: Enter or Escape
+#       bindsym Return mode "default"
+#       bindsym Escape mode "default"
+#   }
+
+
+
+# change focus
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mod+Ctrl+h split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod'w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+#bindsym $mod+d focus child
+
+# move the currently focused window to the scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+# Show the next scratchpad window or hide the focused scratchpad window.
+# If there are multiple scratchpad windows, this command cycles through them.
+# bindsym $mod+minus scratchpad show
+bindsym $mod+Ctrl+minus scratchpad show
+
+# Define names for default workspaces for which we configure key bindings later on.
+# We use variables to avoid repeating the names in multiple places.
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+
+# switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym $left       resize shrink width 5 px or 5 ppt
+        bindsym $down       resize grow height 5 px or 5 ppt
+        bindsym $up         resize shrink height 5 px or 5 ppt
+        bindsym $right      resize grow width 5 px or 5 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left        resize shrink width 5 px or 5 ppt
+        bindsym Down        resize grow height 5 px or 5 ppt
+        bindsym Up          resize shrink height 5 px or 5 ppt
+        bindsym Right       resize grow width 5 px or 5 ppt
+
+       # Resize more rapidy with shift
+        bindsym Shift+$left       resize shrink width 50 px or 50 ppt
+        bindsym Shift+$down       resize grow height 50 px or 50 ppt
+        bindsym Shift+$up         resize shrink height 50 px or 50 ppt
+        bindsym Shift+$right      resize grow width 50 px or 50 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Shift+Left        resize shrink width 50 px or 50 ppt
+        bindsym Shift+Down        resize grow height 50 px or 50 ppt
+        bindsym Shift+Up          resize shrink height 50 px or 50 ppt
+        bindsym Shift+Right       resize grow width 50 px or 50 ppt
+
+        # Resize more finely with Ctrl
+        bindsym Ctrl+$left       resize shrink width 1 px or 1 ppt
+        bindsym Ctrl+$down       resize grow height 1 px or 1 ppt
+        bindsym Ctrl+$up         resize shrink height 1 px or 1 ppt
+        bindsym Ctrl+$right      resize grow width 1 px or 1 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Ctrl+Left        resize shrink width 1 px or 1 ppt
+        bindsym Ctrl+Down        resize grow height 1 px or 1 ppt
+        bindsym Ctrl+Up          resize shrink height 1 px or 1 ppt
+        bindsym Ctrl+Right       resize grow width 1 px or 1 ppt
+
+        # back to normal: Enter or Escape or $mod+r
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+##bar {
+##    status_command i3status
+##}
+
+# Personal config
+#####################################################################################################################
+#################                          i3 gaps next                                             #################
+#####################################################################################################################
+# It is called i3-gaps after all
+for_window [class="^.*"] border pixel 1
+gaps inner 10
+gaps outer 0
+
+
+#####################################################################################################################
+#################                          i3 gaps change                                           #################
+#####################################################################################################################
+
+
+set $mode_gaps Gaps: (o) outer, (i) inner
+set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
+bindsym $mod+Shift+g mode "$mode_gaps"
+
+mode "$mode_gaps" {
+        bindsym o      mode "$mode_gaps_outer"
+        bindsym i      mode "$mode_gaps_inner"
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+mode "$mode_gaps_inner" {
+        bindsym plus  gaps inner current plus 5
+        bindsym minus gaps inner current minus 5
+        bindsym 0     gaps inner current set 0
+
+        bindsym Shift+plus  gaps inner all plus 5
+        bindsym Shift+minus gaps inner all minus 5
+        bindsym Shift+0     gaps inner all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+mode "$mode_gaps_outer" {
+        bindsym plus  gaps outer current plus 5
+        bindsym minus gaps outer current minus 5
+        bindsym 0     gaps outer current set 0
+
+        bindsym Shift+plus  gaps outer all plus 5
+        bindsym Shift+minus gaps outer all minus 5
+        bindsym Shift+0     gaps outer all set 0
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+
+
+
+
+#####################################################################################################################
+#################                          picom and wallpaper                                      #################
+#####################################################################################################################
+
+#if you want transparency on non-focused windows, ...
+# exec_always --no-startup-id picom --config /home/zatout/.config/i3/picom4.conf
+# exec_always --no-startup-id nitrogen --restore
+# exec_always --no-startup-id ~/.config/i3/scripts/mouse.sh
+
+
+
+# Lock desktop with keybind
+# bindsym $mod+x exec i3lock -i /home/zatout/Images/moon-nord.png -p win
+bindsym $mod+x exec bash /home/zatout/.config/i3/lock/lock.sh -i /home/zatout/Images/moon-nord.png
+
+
+# Zen-ify windows by floating and resizing them
+bindsym $mod+z floating enable; resize set 900 600; move position center
+
+bindsym Print exec /usr/bin/flameshot gui
+ 
+# Remove borders for i3-gaps
+for_window [class=".*"] border pixel 0
+for_window [class="zoom"] floating enable
+hide_edge_borders both
+
+# Pywal
+# exec_always --no-startup-id wal -i /home/zatout/Images/Papiers\ peints/milky_way_rick_and_morty.jpg
+#exec_always --no-startup-id wal -a 95 -i /home/zatout/Images/Bash_Scripts/Wallpapers/4598728-sky-digital-art-space-art-fantasy-art-artwork-trees-reflection-anime-water-chair-stars-moon-island-clouds-sunset-bonsai.jpg
+
+# Wallpaper (unnecessary because of pywal)
+# exec_always --no-startup-id feh --bg-fill /home/zatout/Images/Bash_Scripts/Wallpapers/4598728-sky-digital-art-space-art-fantasy-art-artwork-trees-reflection-anime-water-chair-stars-moon-island-clouds-sunset-bonsai.jpg
+ 
+# exec_always --no-startup-id feh --bg-fill $HOME/pictures/fond.jpg
+# Launch xfce Power Manager (for screen/keyboard backlight controls)
+#exec --no-startup-id xfce4-power-manager
+
+# Launch NetworkManager and blueman applets
+exec_always --no-startup-id nm-applet
+exec_always --no-startup-id blueman-applet
+
+
+# Launch polybar
+exec_always --no-startup-id bash /home/zatout/.config/polybar/launch.sh &
+
+exec_always --no-startup-id /usr/bin/xset r rate 250 90
+exec_always --no-startup-id /usr/bin/setxkbmap -option caps:swapescape -layout fr 
+exec_always --no-startup-id /usr/bin/numlockx
+	
+# execute_always feh --bg-max --randomize /home/zatout/Images/Papiers\ peints/
+# Ecrans LIMSI
+# exec_always xrandr --output eDP-1 --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-1-0 --primary --mode 3840x2160 --pos 1920x0 --rotate normal --output DP-1-4 --mode 1920x1080 --pos 5760x0
+exec_always sh /home/zatout/Téléchargements/screenlayout.sh
+# xrandr --output HDMI-0 --primary --auto --output eDP-1-1 --auto --left-of HDMI-1-0 --output DP-1-2 --right-of HDMI-0
+
+# exec_always --no-startup-id feh --bg-fill /home/zatout/Images/wp9602384.png
+exec_always --no-startup-id feh --bg-fill /home/zatout/Images/tower_nord.png
+# Ecrans PROMES
+# exec_always xrandr --output HDMI-1-0 --mode 2560x1440 --primary --output eDP-1 --auto --left-of HDMI-1-0 --output DP-1-4 --auto --right-of HDMI-1-0 # --rotate right
+# xrandr --output DP-1-4 --auto --right-of HDMI-1-0
+# Assigning workspaces to different screens
+workspace 1 output eDP-1-1
+workspace 2 output primary
+workspace 3 output DP-5
+workspace 4 output eDP-1-1
+
+
+# Launch m
+exec_always --no-startup-id bash /home/zatout/.config/picom/launch.sh
+
+exec --no-startup-id i3-msg "workspace 1; append_layout /home/zatout/.config/i3-layout-manager/layouts/layout-WORKSPACE_1.json; exec /usr/bin/gnome-todo; exec /usr/bin/telegram-desktop; exec /usr/bin/mattermost-desktop; exec /snap/bin/whatsapp-for-linux;"
+exec --no-startup-id i3-msg "workspace 2; append_layout /home/zatout/.config/i3-layout-manager/layouts/layout-FIREFOX.json; exec /usr/bin/firefox; "
+exec --no-startup-id i3-msg "workspace 3; append_layout /home/zatout/.config/i3-layout-manager/layouts/layout-WORKSPACE_3.json; exec /usr/bin/alacritty"
+exec --no-startup-id i3-msg "workspace 4; append_layout /home/zatout/.config/i3-layout-manager/layouts/layout-WORKSPACE_4.json; exec /usr/bin/thunderbird;"

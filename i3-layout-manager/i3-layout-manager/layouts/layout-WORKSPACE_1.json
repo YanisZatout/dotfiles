@@ -1,0 +1,113 @@
+[
+{
+	"border": "normal",
+		"floating": "auto_off",
+		"fullscreen_mode": 0,
+		"layout": "splith",
+		"marks": [],
+		"percent": null,
+		"type": "con",
+		"nodes": [
+		{
+			"border": "normal",
+			"floating": "auto_off",
+			"layout": "splitv",
+			"marks": [],
+			"percent": 0.5,
+			"type": "con",
+			"nodes": [
+			{
+				"border": "pixel",
+				"current_border_width": 0,
+				"floating": "auto_off",
+				"geometry": {
+					"height": 1060,
+					"width": 945,
+					"x": 10,
+					"y": 10
+				},
+				"marks": [],
+				"name": "Telegram",
+				"percent": 0.5,
+				"swallows": [
+				{
+					"class": "^TelegramDesktop$"
+				}
+				],
+				"type": "con"
+			},
+			{
+				"border": "pixel",
+				"current_border_width": 0,
+				"floating": "auto_off",
+				"geometry": {
+					"height": 525,
+					"width": 945,
+					"x": 10,
+					"y": 545
+				},
+				"marks": [],
+				"name": "To Do",
+				"percent": 0.5,
+				"swallows": [
+				{
+					"class": "^Gnome-todo$"
+				}
+				],
+				"type": "con"
+			}
+			]
+		},
+		{
+			"border": "normal",
+			"floating": "auto_off",
+			"layout": "splitv",
+			"marks": [],
+			"percent": 0.5,
+			"type": "con",
+			"nodes": [
+			{
+				"border": "pixel",
+				"current_border_width": 0,
+				"floating": "auto_off",
+				"geometry": {
+					"height": 525,
+					"width": 470,
+					"x": 485,
+					"y": 545
+				},
+				"marks": [],
+				"name": "Mattermost Desktop App",
+				"percent": 0.5,
+				"swallows": [
+				{
+					"class": "^Mattermost$"
+				}
+				],
+				"type": "con"
+			},
+			{
+				"border": "pixel",
+				"current_border_width": 0,
+				"floating": "auto_off",
+				"geometry": {
+					"height": 776,
+					"width": 1290,
+					"x": 0,
+					"y": 0
+				},
+				"marks": [],
+				"name": "WhatsApp for Linux",
+				"percent": 0.5,
+				"swallows": [
+				{
+					"class": "^Whatsapp-for-linux$"
+				}
+				],
+				"type": "con"
+			}
+			]
+		}
+		]
+}
+]
