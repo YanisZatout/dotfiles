@@ -52,7 +52,7 @@ bindsym $mod+Shift+a kill
 
 #exec --no-startup-id volumeicon
 #bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
-#exec --no-startup-id pulseaudio
+exec --no-startup-id pulseaudio
 #exec --no-startup-id pa-applet
 #bindsym $mod+Ctrl+m exec pavucontrol
 
@@ -377,33 +377,50 @@ exec_always --no-startup-id blueman-applet
 
 
 # Launch polybar
-exec_always --no-startup-id bash /home/zatout/.config/polybar/launch.sh &
+exec_always --no-startup-id sh /home/zatout/.config/polybar/launch.sh &
 
 exec_always --no-startup-id /usr/bin/xset r rate 250 90
 exec_always --no-startup-id /usr/bin/setxkbmap -option caps:swapescape -layout fr 
 exec_always --no-startup-id /usr/bin/numlockx
 	
 # execute_always feh --bg-max --randomize /home/zatout/Images/Papiers\ peints/
-# Ecrans LIMSI
-# exec_always xrandr --output eDP-1 --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-1-0 --primary --mode 3840x2160 --pos 1920x0 --rotate normal --output DP-1-4 --mode 1920x1080 --pos 5760x0
-exec_always xrandr --output HDMI-0 --primary --auto --output eDP-1-1 --auto --left-of HDMI-0 --output DP-5 --right-of HDMI-0
+exec_always sh /home/zatout/Téléchargements/promes_layout2.sh
+# xrandr --output DP-4 --scale 0.75x0.75
+# exec_always bash /home/zatout/Téléchargements/lisn_layout.sh
+# xrandr --output HDMI-0 --primary --auto --output eDP-1-1 --auto --left-of HDMI-1-0 --output DP-1-2 --right-of HDMI-0
 
-exec_always --no-startup-id feh --bg-fill /home/zatout/Images/wp9602384.png
+# exec_always --no-startup-id feh --bg-fill /home/zatout/Images/wp9602384.png
+exec_always --no-startup-id feh --bg-fill /home/zatout/Images/tower_nord.png
 # Ecrans PROMES
 # exec_always xrandr --output HDMI-1-0 --mode 2560x1440 --primary --output eDP-1 --auto --left-of HDMI-1-0 --output DP-1-4 --auto --right-of HDMI-1-0 # --rotate right
 # xrandr --output DP-1-4 --auto --right-of HDMI-1-0
 # Assigning workspaces to different screens
+# PROMES
 workspace 1 output eDP-1-1
 workspace 2 output primary
-workspace 3 output DP-4
+workspace 3 output HDMI-0
 workspace 4 output eDP-1-1
+workspace 5 output primary
+
+
+# LISN :
+# workspace 1 output eDP-1-1
+# workspace 2 output primary
+# workspace 3 output DP-5
+# workspace 4 output eDP-1-1
+# workspace 5 output primary
 
 
 # Launch m
-# exec_always --no-startup-id /home/zatout/.config/picom/launch.sh
 exec_always --no-startup-id bash /home/zatout/.config/picom/launch.sh
 
-exec --no-startup-id i3-msg "workspace 1; append_layout /home/zatout/.config/i3-layout-manager/layouts/layout-WORKSPACE_1.json; exec /usr/bin/gnome-todo; exec /usr/bin/telegram-desktop; exec /usr/bin/mattermost-desktop; exec /snap/bin/whatsapp-for-linux;"
+exec --no-startup-id i3-msg "workspace 1; append_layout /home/zatout/.config/i3-layout-manager/layouts/layout-WORKSPACE_1.json; exec /usr/bin/slack; exec /usr/bin/telegram-desktop; exec /usr/bin/mattermost-desktop; exec /usr/bin/whatsapp-for-linux;"
 exec --no-startup-id i3-msg "workspace 2; append_layout /home/zatout/.config/i3-layout-manager/layouts/layout-FIREFOX.json; exec /usr/bin/firefox; "
 exec --no-startup-id i3-msg "workspace 3; append_layout /home/zatout/.config/i3-layout-manager/layouts/layout-WORKSPACE_3.json; exec /usr/bin/alacritty"
 exec --no-startup-id i3-msg "workspace 4; append_layout /home/zatout/.config/i3-layout-manager/layouts/layout-WORKSPACE_4.json; exec /usr/bin/thunderbird;"
+exec --no-startup-id i3-msg "workspace 5; exec /usr/bin/zotero;"
+
+# focus_follows_mouse no
+
+no_focus [window_role="pop-up"]
+focus_on_window_activation urgent
