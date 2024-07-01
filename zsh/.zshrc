@@ -42,7 +42,7 @@ zsh_add_file "zsh-prompt"
 zsh_add_plugin "zsh-users/zsh-autosuggestions"
 zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
 zsh_add_plugin "hlissner/zsh-autopair"
-# zsh_add_completion "esc/conda-zsh-completion" false
+zsh_add_completion "esc/conda-zsh-completion" false
 # For more plugins: https://github.com/unixorn/awesome-zsh-plugins
 # More completions https://github.com/zsh-users/zsh-completions
 
@@ -101,18 +101,9 @@ export QT_QPA_PLATFORMTHEME=qt5ct
 export PATH=/home/zatout/.fnm:$PATH
 eval "`fnm env`"
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/zatout/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/zatout/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/zatout/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/zatout/anaconda3/bin:$PATH"
-    fi
+# fnm
+FNM_PATH="/home/yanis/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="/home/yanis/.local/share/fnm:$PATH"
+  eval "`fnm env`"
 fi
-unset __conda_setup
-# <<< conda initialize <<<
-

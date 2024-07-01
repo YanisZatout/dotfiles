@@ -90,7 +90,7 @@ bindsym XF86AudioPrev exec playerctl previous
 # start rofi (a program launcher)
 #bindsym $mod+d exec rofi -modi "window#run#ssh" -show drun
 
-bindsym $mod+d exec rofi -show-icons -me-select-entry '' -me-accept-entry MousePrimary -theme "/home/zatout/.config/rofi/themes/nord.rasi" -show drun -modi "window#drun#ssh"
+bindsym $mod+d exec rofi -show-icons -me-select-entry '' -me-accept-entry MousePrimary -theme "/home/yanis/.config/rofi/themes/nord.rasi" -show drun -modi "window#drun#ssh"
 
 bindsym $mod+p exec rofi -show-icons -me-select-entry '' -me-accept-entry MousePrimary -modi dock:'~/.config/rofi/grid/rofi-json.sh ~/.config/rofi/grid/apps.json' -show dock -theme '~/.config/rofi/themes/slate_center.rasi'
 
@@ -101,9 +101,6 @@ bindsym $mod+p exec rofi -show-icons -me-select-entry '' -me-accept-entry MouseP
 #####################################################################################################################
 
 #   bindsym $mod+0 mode "$mode_system"
-
-#   set $mode_system System (k) lock, (l) logout, (u) suspend, (h) hibernate, (r) reboot, (s) shutdown
-#   mode "$mode_system" {
 
 #       bindsym k exec --no-startup-id ~/.config/i3/scripts/i3exit.sh lock, mode "default"
 #       bindsym l exec --no-startup-id ~/.config/i3/scripts/i3exit.sh logout, mode "default"
@@ -338,16 +335,9 @@ mode "$mode_gaps_outer" {
 #################                          picom and wallpaper                                      #################
 #####################################################################################################################
 
-#if you want transparency on non-focused windows, ...
-# exec_always --no-startup-id picom --config /home/zatout/.config/i3/picom4.conf
-# exec_always --no-startup-id nitrogen --restore
-# exec_always --no-startup-id ~/.config/i3/scripts/mouse.sh
-
-
 
 # Lock desktop with keybind
-# bindsym $mod+x exec i3lock -i /home/zatout/Images/moon-nord.png -p win
-bindsym $mod+x exec bash /home/zatout/.config/i3/lock/lock.sh -i /home/zatout/Images/moon-nord.png
+bindsym $mod+x exec zsh /home/yanis/.config/i3/lock/lock.sh -i /home/yanis/Images/moon-nord.png
 
 
 # Zen-ify windows by floating and resizing them
@@ -359,17 +349,7 @@ bindsym Print exec /usr/bin/flameshot gui
 for_window [class=".*"] border pixel 0
 for_window [class="zoom"] floating enable
 hide_edge_borders both
-
-# Pywal
-# exec_always --no-startup-id wal -i /home/zatout/Images/Papiers\ peints/milky_way_rick_and_morty.jpg
-#exec_always --no-startup-id wal -a 95 -i /home/zatout/Images/Bash_Scripts/Wallpapers/4598728-sky-digital-art-space-art-fantasy-art-artwork-trees-reflection-anime-water-chair-stars-moon-island-clouds-sunset-bonsai.jpg
-
-# Wallpaper (unnecessary because of pywal)
-# exec_always --no-startup-id feh --bg-fill /home/zatout/Images/Bash_Scripts/Wallpapers/4598728-sky-digital-art-space-art-fantasy-art-artwork-trees-reflection-anime-water-chair-stars-moon-island-clouds-sunset-bonsai.jpg
  
-# exec_always --no-startup-id feh --bg-fill $HOME/pictures/fond.jpg
-# Launch xfce Power Manager (for screen/keyboard backlight controls)
-#exec --no-startup-id xfce4-power-manager
 
 # Launch NetworkManager and blueman applets
 exec_always --no-startup-id nm-applet
@@ -377,48 +357,30 @@ exec_always --no-startup-id blueman-applet
 
 
 # Launch polybar
-exec_always --no-startup-id sh /home/zatout/.config/polybar/launch.sh &
+exec_always --no-startup-id sh /home/yanis/.config/polybar/launch.sh &
 
 exec_always --no-startup-id /usr/bin/xset r rate 250 90
 exec_always --no-startup-id /usr/bin/setxkbmap -option caps:swapescape -layout fr 
 exec_always --no-startup-id /usr/bin/numlockx
 	
-# execute_always feh --bg-max --randomize /home/zatout/Images/Papiers\ peints/
-exec_always sh /home/zatout/Téléchargements/promes_layout2.sh
+# execute_always feh --bg-max --randomize /home/yanis/Images/Papiers\ peints/
+exec_always sh /home/yanis/Téléchargements/promes_layout2.sh
 # xrandr --output DP-4 --scale 0.75x0.75
-# exec_always bash /home/zatout/Téléchargements/lisn_layout.sh
+# exec_always zsh /home/yanis/Téléchargements/lisn_layout.sh
 # xrandr --output HDMI-0 --primary --auto --output eDP-1-1 --auto --left-of HDMI-1-0 --output DP-1-2 --right-of HDMI-0
 
-# exec_always --no-startup-id feh --bg-fill /home/zatout/Images/wp9602384.png
-exec_always --no-startup-id feh --bg-fill /home/zatout/Images/tower_nord.png
-# Ecrans PROMES
-# exec_always xrandr --output HDMI-1-0 --mode 2560x1440 --primary --output eDP-1 --auto --left-of HDMI-1-0 --output DP-1-4 --auto --right-of HDMI-1-0 # --rotate right
-# xrandr --output DP-1-4 --auto --right-of HDMI-1-0
-# Assigning workspaces to different screens
-# PROMES
-workspace 1 output eDP-1-1
-workspace 2 output primary
-workspace 3 output HDMI-0
-workspace 4 output eDP-1-1
-workspace 5 output primary
-
-
-# LISN :
-# workspace 1 output eDP-1-1
-# workspace 2 output primary
-# workspace 3 output DP-5
-# workspace 4 output eDP-1-1
-# workspace 5 output primary
+# exec_always --no-startup-id feh --bg-fill /home/yanis/Images/wp9602384.png
+exec_always --no-startup-id feh --bg-fill /home/yanis/Images/nord_wallpaper.png
 
 
 # Launch m
-exec_always --no-startup-id bash /home/zatout/.config/picom/launch.sh
+exec_always --no-startup-id zsh /home/yanis/.config/picom/launch.sh
 
-exec --no-startup-id i3-msg "workspace 1; append_layout /home/zatout/.config/i3-layout-manager/layouts/layout-WORKSPACE_1.json; exec /usr/bin/slack; exec /usr/bin/telegram-desktop; exec /usr/bin/mattermost-desktop; exec /usr/bin/whatsapp-for-linux;"
-exec --no-startup-id i3-msg "workspace 2; append_layout /home/zatout/.config/i3-layout-manager/layouts/layout-FIREFOX.json; exec /usr/bin/firefox; "
-exec --no-startup-id i3-msg "workspace 3; append_layout /home/zatout/.config/i3-layout-manager/layouts/layout-WORKSPACE_3.json; exec /usr/bin/alacritty"
-exec --no-startup-id i3-msg "workspace 4; append_layout /home/zatout/.config/i3-layout-manager/layouts/layout-WORKSPACE_4.json; exec /usr/bin/thunderbird;"
-exec --no-startup-id i3-msg "workspace 5; exec /usr/bin/zotero;"
+########exec --no-startup-id i3-msg "workspace 1; append_layout /home/yanis/.config/i3-layout-manager/layouts/layout-WORKSPACE_1.json; exec /usr/bin/slack; exec /usr/bin/telegram-desktop; exec /usr/bin/mattermost-desktop; exec /usr/bin/whatsapp-for-linux;"
+exec --no-startup-id i3-msg "workspace 2; append_layout /home/yanis/.config/i3-layout-manager/layouts/layout-FIREFOX.json; exec /usr/bin/firefox; "
+########exec --no-startup-id i3-msg "workspace 3; append_layout /home/yanis/.config/i3-layout-manager/layouts/layout-WORKSPACE_3.json; exec /usr/bin/alacritty"
+########exec --no-startup-id i3-msg "workspace 4; append_layout /home/yanis/.config/i3-layout-manager/layouts/layout-WORKSPACE_4.json; exec /usr/bin/thunderbird;"
+########exec --no-startup-id i3-msg "workspace 5; exec /usr/bin/zotero;"
 
 # focus_follows_mouse no
 
