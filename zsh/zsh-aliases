@@ -74,6 +74,7 @@ alias vi='nvim'
 alias source_183="source /home/zatout/triou/183/TRUST-1.8.3/env_TRUST.sh"
 alias source_184="source /home/zatout/triou/184/TRUST-1.8.4/env_TRUST.sh"
 alias source_181="source /home/zatout/triou/181/TRUST-1.8.1/env_TRUST.sh"
+alias htop="bpytop"
 
 # export PATH=/home/zatout/Apps/pycharm-community-2022.1/bin:$PATH
 alias pycharm="sh /home/zatout/Apps/pycharm-community-2022.1/bin/pycharm.sh"
