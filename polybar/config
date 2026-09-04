@@ -1,0 +1,380 @@
+;=====================================================
+;
+;   To learn more about how to configure Polybar
+;   go to https://github.com/jaagr/polybar
+;
+;   The README contains alot of information
+;
+;=====================================================
+
+[colors]
+;background = ${xrdb:color0:#222}
+background = #2e3440
+background-alt = #444
+;foreground = ${xrdb:color7:#222}
+foreground = #eceff4
+foreground-alt = #d08770
+primary =  #456771
+secondary = #09404d
+alert = #bd2c40
+
+underline = #eceff4
+shade1 = #3b4252
+shade2 = #434c5e
+shade3 = #4c566a
+shade4 = #5e81ac
+shade5 = #81a1c1
+shade6 = #88c0d0
+shade7 = #8fbcbb
+shade8 = #b48ead
+shade9 = #a3be8c
+shade10 = #ebcb8b
+shade11 = #d08770
+shade12 = #bf616a
+
+[bar/Bar]
+monitor = ${env:MONITOR:}
+width = 100%
+height = 30
+;offset-x = 1%
+;offset-y = 1%
+radius = 6.0
+fixed-center = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 3
+line-color = #f00
+
+border-size = 4
+border-color = ${color.background}
+padding-left = 2
+padding-right = 2
+
+module-margin-left = 1
+module-margin-right = 2
+
+font-0 = Hack:pixelsize=11;1
+font-1 = FontAwesome:pixelsize=11;1
+font-2 = siji:pixelsize=10;1
+
+modules-left = i3
+modules-center = time
+modules-right = backlight-acpi redshift volume memory cpu temperature battery0 powermenu
+
+tray-position = right
+tray-padding = 2
+tray-transparent = true
+
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:30:...%
+
+[module/ext-ipv4]
+type = custom/script
+;format-underline = #9f78e1
+exec = $HOME/.config/polybar/scripts/pub-ipv4.sh
+label = %output%
+tail = true
+
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground-alt}
+format-prefix-underline = ${colors.secondary}
+
+label-layout = %layout%
+label-layout-underline = ${colors.secondary}
+
+label-indicator-padding = 2
+label-indicator-margin = 1
+label-indicator-background = ${colors.secondary}
+label-indicator-underline = ${colors.secondary}
+
+[module/filesystem]
+type = internal/fs
+interval = 25
+
+mount-0 = /
+
+label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
+label-unmounted = %mountpoint% not mounted
+label-unmounted-foreground = ${colors.foreground-alt}
+
+[module/battery]
+type = internal/battery
+;battery = BAT1
+adapter = ADP1
+full-at = 98
+
+format-charging-prefix = "(chr) BAT: "
+format-charging = <label-charging>
+format-charging-underline = #55aa55
+
+format-discharging-prefix = "BAT: "
+format-discharging = <label-discharging>
+format-discharging-underline = #ffb52a
+
+format-full-prefix = ${self.format-discharging-prefix}
+format-full = <label-full>
+;format-full-prefix-foreground = ${colors.foreground-alt}
+format-full-underline = #55aa55
+
+;ramp-capacity-0 = î<88>¶
+;ramp-capacity-1 = î<88>·
+;ramp-capacity-2 = î<88>¸
+;ramp-capacity-foreground = ${colors.foreground-alt}
+
+animation-charging-0 = î<88>¶
+animation-charging-1 = î<88>·
+animation-charging-2 = î<88>¸
+;animation-charging-foreground = ${colors.foreground-alt};
+animation-charging-framerate = 750
+
+animation-discharging-0 = î<88>¸
+animation-discharging-1 = î<88>·
+animation-discharging-2 = î<88>¶
+;animation-discharging-foreground = ${colors.foreground-alt}
+animation-discharging-framerate = 750
+
+[module/battery0]
+inherit = module/battery
+battery = BAT0
+format-charging-prefix = "(chr) BAT: "
+format-discharging-prefix = "BAT: "
+
+; [module/battery1]
+; inherit = module/battery
+; battery = BAT1
+; format-charging-prefix = "(chr) BAT1: "
+; format-discharging-prefix = "BAT1: "
+
+[module/bspwm]
+type = internal/bspwm
+
+label-focused = %index%
+label-focused-background = ${colors.shade2}
+label-focused-padding = 2
+
+label-occupied = %index%
+label-occupied-padding = 2
+
+label-urgent = %index%!
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 2
+
+label-empty = %index%
+label-empty-foreground = ${colors.foreground-alt}
+; label-empty-padding = 2
+
+; Separator in between workspaces
+; label-separator = |
+
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+index-sort = true
+wrapping-scroll = false
+
+; Only show workspaces on the same output as the bar
+;pin-workspaces = true
+
+label-mode-padding = 2
+label-mode-foreground = ${colors.foreground}
+label-mode-background = ${colors.background}
+
+; focused = Active workspace on focused monitor
+label-focused = %index%
+label-focused-background = ${module/bspwm.label-focused-background}
+label-focused-underline = ${module/bspwm.label-focused-underline}
+label-focused-padding = ${module/bspwm.label-focused-padding}
+
+; unfocused = Inactive workspace on any monitor
+label-unfocused = %index%
+label-unfocused-padding = ${module/bspwm.label-occupied-padding}
+
+; visible = Active workspace on unfocused monitor
+label-visible = %index%
+label-visible-background = ${self.label-focused-background}
+label-visible-underline = ${self.label-focused-underline}
+label-visible-padding = ${self.label-focused-padding}
+
+; urgent = Workspace with urgency hint set
+label-urgent = %index%
+label-urgent-background = ${module/bspwm.label-urgent-background}
+label-urgent-padding = ${module/bspwm.label-urgent-padding}
+
+
+[module/xbacklight]
+type = internal/xbacklight
+
+format = <label> <bar>
+label = BRIGHT
+label-foreground  = ${colors.foreground} 
+
+bar-width = 12
+bar-indicator = |
+bar-indicator-foreground = #
+bar-indicator-font = 2
+bar-fill = ─
+bar-fill-font = 2
+bar-fill-foreground = #f90000
+bar-empty = ─
+bar-empty-font = 2
+bar-empty-foreground = ${colors.foreground-alt}
+
+[module/backlight-acpi]
+inherit = module/xbacklight
+type = internal/backlight
+card = intel_backlight
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground}
+format-underline = ${colors.shade12}
+label = %percentage%%
+
+[module/memory]
+type = internal/memory
+interval = 2
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground}
+format-underline =  ${colors.shade12}
+label = %percentage_used%%
+
+
+[module/date]
+type = internal/date
+interval = 5
+
+date =
+date-alt = " %Y-%m-%d"
+
+time = %H:%M
+time-alt = %H:%M:%S
+
+format-prefix = 
+format-prefix-foreground = ${colors.foreground-alt}
+format-underline =  ${colors.shade12}
+
+label = %date% %time%
+
+[module/volume]
+type = internal/volume
+
+format-volume = <label-volume> <bar-volume>
+label-volume = VOL 
+label-volume-foreground = ${colors.foreground} 
+
+format-muted-prefix = " "
+format-muted-foreground = ${colors.foreground-alt}
+label-muted = MUTED 
+label-muted-foreground = #f90000
+
+
+bar-volume-width = 10
+bar-volume-foreground-0 = ${colors.shade5}
+bar-volume-foreground-1 = ${colors.shade6}
+bar-volume-foreground-2 = ${colors.shade7}
+bar-volume-foreground-3 = ${colors.shade8}
+bar-volume-foreground-4 = ${colors.shade9}
+bar-volume-foreground-5 = ${colors.shade10}
+bar-volume-foreground-6 = ${colors.shade11}
+bar-volume-gradient = true
+bar-volume-indicator = ●
+bar-volume-indicator-font = 2
+bar-volume-fill = ─
+bar-volume-fill-font = 2
+bar-volume-empty = ─
+bar-volume-empty-font = 2
+bar-volume-empty-foreground = ${colors.foreground-alt}
+
+[module/temperature]
+type = internal/temperature
+thermal-zone = 0
+warn-temperature = 60
+
+format = <ramp> <label>
+format-underline =  ${colors.shade12}
+format-warn = <ramp> <label-warn>
+format-warn-underline = ${self.format-underline}
+
+label = %temperature%
+label-warn = %temperature%
+label-warn-foreground = ${colors.secondary}
+
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-foreground = ${colors.foreground-alt}
+
+format-prefix = " "
+format-prefix-foreground = #666
+
+
+[module/powermenu]
+type = custom/menu
+
+expand-right = true
+
+format-spacing = 1
+
+label-open = Power
+label-open-foreground = #f90000
+label-close = X cancel
+label-close-foreground = #f90000
+label-separator = |
+label-separator-foreground = ${colors.foreground-alt}
+
+menu-0-0 = reboot
+menu-0-0-exec = systemctl reboot
+menu-0-1 = poweroff
+menu-0-1-exec = systemctl poweroff
+
+
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+
+
+[module/redshift]
+type = custom/menu
+
+expand-right = true
+
+format-spacing = 1
+
+label-open = GAMMA
+label-open-foreground = ${colors.foreground}
+label-close = X cancel
+label-close-foreground = ${colors.foreground}
+label-separator = |
+label-separator-foreground = ${colors.foreground-alt}
+
+menu-0-0 = day
+menu-0-0-exec = redshift -x
+menu-0-1 = night
+menu-0-1-exec = redshift -P -O 3000
+
+screenchange-reload = true
+
+
+[module/time]
+type = custom/script
+exec = date
+interval = 1
+format-underline = ${colors.shade12} 
+format-prefix = " "
+format-prefix-foreground = #666
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+; vim:ft=dosini
