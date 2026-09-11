@@ -1,8 +1,10 @@
-alias j='z'
-alias f='zi'
+# alias j='z'
+# alias f='zi'
+alias f='firefox'
 alias g='lazygit'
 alias zsh-update-plugins="find "$ZDOTDIR/plugins" -type d -exec test -e '{}/.git' ';' -print0 | xargs -I {} -0 git -C {} pull -q"
 alias nvimrc='nvim ~/.config/nvim/'
+alias virc='nvim ~/.config/nvim/'
 
 # alias lvim='nvim -u ~/.local/share/lunarvim/lvim/init.lua --cmd "set runtimepath+=~/.local/share/lunarvim/lvim"'
 
@@ -70,21 +72,18 @@ alias md='make dbg'
 alias makec='make && make clean'
 alias makedc='make dist_clean'
 alias gc='git checkout'
-alias vi='nvim'
-alias source_183="source /home/zatout/triou/183/TRUST-1.8.3/env_TRUST.sh"
-alias source_184="source /home/zatout/triou/184/TRUST-1.8.4/env_TRUST.sh"
-alias source_181="source /home/zatout/triou/181/TRUST-1.8.1/env_TRUST.sh"
+alias vi='nvim -p'
+alias rf='readlink -f'
+alias z="zathura"
 
-# export PATH=/home/zatout/Apps/pycharm-community-2022.1/bin:$PATH
-alias pycharm="sh /home/zatout/Apps/pycharm-community-2022.1/bin/pycharm.sh"
 # Input prompt of fuzzy searcher
 eval `cat ~/.fehbg`
-export PATH=/usr/local/cuda-11.6/bin${PATH:+:${PATH}}
+# export PATH=/usr/local/cuda-11.6/bin${PATH:+:${PATH}}
 #xport CUDA_NVCC_EXECUTABLE=/usr/local/cuda-11.6/bin/nvcc
 #xport CUDA_INCLUDE_DIRS=/usr/local/cuda-11.6/lib64
 #xport CUDA_TOOLKIT_ROOT_DIR=/usr/local/cuda-11.6/
 #xport CUDA_HOME=/usr/local/cuda/
-export LD_LIBRARY_PATH=/usr/local/cuda-11.6/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+# export LD_LIBRARY_PATH=/usr/local/cuda-11.6/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 # neofetch
 alias scp='noglob scp_wrap'
 function scp_wrap {

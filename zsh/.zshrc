@@ -98,21 +98,36 @@ export QT_QPA_PLATFORMTHEME=qt5ct
 
 
 # fnm
-export PATH=/home/zatout/.fnm:$PATH
-eval "`fnm env`"
+export PATH=/home/yanis/.fnm:$PATH
+# eval "`fnm env`"
+eval "$(fnm env --use-on-cd --shell zsh)"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/zatout/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('/home/yanis/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/home/zatout/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/zatout/anaconda3/etc/profile.d/conda.sh"
+    if [ -f "/home/yanis/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/yanis/anaconda3/etc/profile.d/conda.sh"
     else
-        export PATH="/home/zatout/anaconda3/bin:$PATH"
+        export PATH="/home/yanis/anaconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+
+# fnm
+FNM_PATH="/home/yanis/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="$FNM_PATH:$PATH"
+  eval "$(fnm env --shell zsh)"
+fi
+
+# fnm
+FNM_PATH="/home/yanis/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="$FNM_PATH:$PATH"
+  eval "$(fnm env --shell zsh)"
+fi
